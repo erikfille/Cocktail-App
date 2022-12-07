@@ -1,0 +1,49 @@
+.inputContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.searchDiv {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+}
+
+.button {
+  color: #090909;
+  padding: 0.5rem;
+  font-size: 14px;
+  border: none;
+  transition: all 0.75s;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #fe6dff, #d55ce6);
+  /* box-shadow: 5px 5px 10px #ce59de, -5px -5px 10px #ff73ff; */
+  margin: 0.5%;
+}
+
+.button:hover {
+  box-shadow: 2px 2px 90px #ce59de, -2px -2px 90px #ff73ff;
+
+}
+
+.button:active {
+  box-shadow: 15px 15px 30px #ce59de, -15px -15px 30px #ff73ff;
+}
+
+.input {
+  border: none;
+  padding: .5em;
+  border-radius: .75em;
+  background: #e8e8e8;
+  box-shadow: 2px 2px 30px #303030, -2px -2px 30px #707070;
+  transition: 0.75s;
+}
+
+.input:focus {
+  border: .5px solid white;
+  outline-color: #e8e8e8;
+  background: #e8e8e8;
+  box-shadow: inset 20px 20px 60px #c5c5c5, inset -20px -20px 60px #ffffff;
+  transition: 0.75s;
+}

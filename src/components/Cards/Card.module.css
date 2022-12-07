@@ -1,0 +1,61 @@
+.divContainer {
+  color: #ed66ff;
+  display: inline-block;
+  margin: 1rem;
+  border-radius: 30px;
+  background: inherit;
+  box-shadow:  10px 10px 20px #232323,
+               -10px -10px 20px #2f2f2f;
+  width: 400px;
+  height: auto;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-top: 1em;
+  margin-bottom: 0em;
+}
+
+.hasAlcoholTag {
+  font-size: small;
+  color: white;
+}
+
+img {
+  width: 400px;
+}
+
+.button {
+  color: white;
+  padding: 0.5rem;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  transition: all 0.75s;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #fe6dff, #d55ce6);
+  /* box-shadow: 5px 5px 10px #ce59de, -5px -5px 10px #ff73ff; */
+  margin-top: 1em;
+}
+
+.button:hover {
+  background: inherit;
+  border: 1px solid #ed66ff;
+  font-size: 13px;
+  box-shadow: 2px 2px 90px #ce59de, -2px -2px 90px #ff73ff;
+
+}
+
+.button:active {
+  box-shadow: 15px 15px 30px #ce59de, -15px -15px 30px #ff73ff;
+}
+
+hr {
+  width: 75%;
+  color: #ff8af5;
+}
+
