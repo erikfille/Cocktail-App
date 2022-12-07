@@ -1,33 +1,82 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import "./App.css";
 import Cards from "./components/Cards/Cards.jsx";
-import Nav from "./components/Nav/Nav.jsx"
+import Detail from "./components/Cards/Detail.jsx";
+import Nav from "./components/Nav/Nav.jsx";
+import Login from "./components/Login/Login.jsx";
+import About from "./components/Nav/About.jsx";
 
 function App() {
+  const [drinks, setDrinks] = useState([]);
 
- const [ drinks, setDrinks ] = useState([])
+  const [access, setAccess] = useState(false);
 
- function onClose(e){
-  let newDrinks = drinks.filter((d) => d.idDrink !== e)
-  setDrinks(newDrinks)
- }
+  const navigate = useNavigate();
+  const location = useLocation();
 
- function onSearch(search) {
-  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`)
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.drinks && search!=="") {
-        setDrinks(data.drinks);
-      } else {
-        window.alert("We haven't found any drinks that match :'(");
-      }
-    });
-}
+  const username = "fakemail@fake.com";
+  const password = "FakePassword123";
+
+  function login(userData) {
+    if (userData.username === username && userData.password === password) {
+      setAccess(true);
+      navigate("/home");
+    } else {
+      return window.alert("Incorrect username or password");
+    }
+  }
+
+  function logout() {
+    setAccess(false);
+  }
+
+  function onClose(e) {
+    let newDrinks = drinks.filter((d) => d.idDrink !== e);
+    setDrinks(newDrinks);
+  }
+
+  function onSearch(search) {
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.drinks && search !== "") {
+          setDrinks(data.drinks);
+        } else {
+          window.alert("We haven't found any drinks that match :'(");
+        }
+      });
+    navigate("/home");
+  }
+
+  useEffect(() => {
+    access === false && navigate("/");
+  }, [access, navigate]);
+
+  // useEffect(() => {
+  //   fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.drinks && search !== "") {
+  //         setRandom(data.drinks);
+  //       } else {
+  //         window.alert("We haven't found any drinks that match :'(");
+  //       }
+  //     });
+  // }, [random]);
 
   return (
     <div className="App">
-      <Nav onSearch={onSearch}/>
-      <Cards drinks={drinks} onClose={onClose} />
+      {location.pathname !== "/" && <Nav onSearch={onSearch} logout={logout} />}
+      <Routes>
+        <Route path="/" element={<Login login={login} />} />
+        <Route
+          path="/home"
+          element={<Cards drinks={drinks} onClose={onClose} />}
+        />
+        <Route path="/drink/:drinkId" element={<Detail />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </div>
   );
 }

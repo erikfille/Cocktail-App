@@ -1,3 +1,6 @@
+import s from "./Card.module.css";
+import { Link } from "react-router-dom";
+
 /*
 
 - ¿Que hace? 
@@ -10,12 +13,18 @@ Se encarga de mostrar la info de cada cosa que traigamos, mapeandolo en un <div 
 */
 
 export default function Card(props) {
+
+  console.log(props.idDrink)
   return (
-    <div>
-      <button onClick={() => props.onClose(props.idDrink)}>X</button>
-      <p>{props.strAlcoholic}</p>
-      <h1>{props.strDrink}</h1>
-      <img src={props.strImageSource} alt={props.strDrink} />
+    <div className={s.divContainer}>
+      <button className={s.button} onClick={() => props.onClose(props.idDrink)}>
+        X
+      </button>
+      <p className={s.hasAlcoholTag}>{props.strAlcoholic}</p>
+      <Link to={`/drink/${props.idDrink}`}>
+        <h1>{props.strDrink}</h1>
+      </Link>
+      <img src={props.strDrinkThumb} alt={props.strDrink} />
       <hr />
       <h2>Category:</h2>
       <p>{props.strCategory}</p>

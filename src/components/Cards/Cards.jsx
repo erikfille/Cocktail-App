@@ -1,4 +1,5 @@
 import Card from "./Card";
+// import "./Cards.modules.css"
 
 export default function Cards(props) {
   const { drinks, onClose } = props;
@@ -12,7 +13,7 @@ export default function Cards(props) {
           strDrink={d.strDrink}
           strCategory={d.strCategory}
           strGlass={d.strGlass}
-          strImageSource={d.strImageSource}
+          strDrinkThumb={d.strDrinkThumb}
           onClose={onClose}
         />
       ))}
