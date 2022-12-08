@@ -1,30 +1,53 @@
 import s from "./Card.module.css";
 import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { addDrink, removeDrink } from "../../redux/actions";
+import { connect } from "react-redux";
 
-/*
+export function Card(props) {
+  const { idDrink, removeDrink, addDrink, myDrinks } = props;
 
-- ¿Que hace? 
-Recibe de <Cards /> las props con la info que se va a mostrar en el componente y la función onClose, para cerrar la tarjeta
-Se encarga de mostrar la info de cada cosa que traigamos, mapeandolo en un <div />.
+  const [favDrink, setFavDrink] = React.useState(false);
 
-- ¿De donde viene la info? 
-<App /> → <Cards /> → **<Card />**
+  function handleFavorite() {
+    if (favDrink) {
+      setFavDrink(false);
+      removeDrink(idDrink);
+    }
+    if (!favDrink) {
+      setFavDrink(true);
+      addDrink(props);
+    }
+  }
 
-*/
+  useEffect(() => {
+    myDrinks.forEach((fav) => {
+      if (fav.idDrink === idDrink) {
+        setFavDrink(true);
+      }
+    });
+  }, [myDrinks, idDrink]);
 
-export default function Card(props) {
-
-  console.log(props.idDrink)
-  return (
+  const drinkCard = (
     <div className={s.divContainer}>
-      <button className={s.button} onClick={() => props.onClose(props.idDrink)}>
+      {" "}
+      <button className={s.button} onClick={() => props.onClose(idDrink)}>
         X
       </button>
+      {favDrink ? (
+        <button onClick={handleFavorite}>❤️</button>
+      ) : (
+        <button onClick={handleFavorite}>🤍</button>
+      )}
       <p className={s.hasAlcoholTag}>{props.strAlcoholic}</p>
-      <Link to={`/drink/${props.idDrink}`}>
-        <h1>{props.strDrink}</h1>
+      <Link to={`/drink/${idDrink}`}>
+        <h1 className={s.name}>{props.strDrink}</h1>
       </Link>
-      <img src={props.strDrinkThumb} alt={props.strDrink} />
+      <img
+        className="drinkImg"
+        src={props.strDrinkThumb}
+        alt={props.strDrink}
+      />
       <hr />
       <h2>Category:</h2>
       <p>{props.strCategory}</p>
@@ -32,17 +55,44 @@ export default function Card(props) {
       <p>{props.strGlass}</p>
     </div>
   );
+
+  const ingredientCard = (
+    <div className={s.divContainer}>
+      <button className={s.button} onClick={() => props.onClose(idDrink)}>
+        X
+      </button>
+      <Link to={`/drink/${idDrink}`}>
+        <h1 className={s.name}>{props.strDrink}</h1>
+      </Link>
+      <img
+        className="ingredientImg"
+        src={props.strDrinkThumb}
+        alt={props.strDrink}
+      />
+      <hr/>
+      <h2>Drink ID in Database:</h2>
+      <p>{idDrink}</p>
+    </div>
+  );
+
+  return props.type === "drink" ? drinkCard : ingredientCard;
 }
 
-/*
+function mapDispatchToProps(dispatch) {
+  return {
+    addDrink: (props) => {
+      dispatch(addDrink(props));
+    },
+    removeDrink: (idDrink) => {
+      dispatch(removeDrink(idDrink));
+    },
+  };
+}
 
-Mostramos:
+function mapStateToProps(state) {
+  return {
+    myDrinks: state.myDrinks,
+  };
+}
 
-Boton para cerrar
-Si el trago es alcoholico
-Nombre del trago
-Imagen
-Categoria del trago
-Vaso para servir
-
-*/
+export default connect(mapStateToProps, mapDispatchToProps)(Card);

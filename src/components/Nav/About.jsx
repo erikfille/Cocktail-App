@@ -1,8 +1,10 @@
+import s from "./About.module.css";
+
 export default function About() {
     return (
-        <div>
+        <div className={s.divContainer}>
           <div>
-            <h1>Creado por Erik Filleaudeau</h1>
+            <h1>Creado por <br/>Erik Filleaudeau</h1>
           </div>
           <hr />
             <img
@@ -12,11 +14,6 @@ export default function About() {
               height= "auto"
             />
           <hr />
-          <h2>
-            <span>Developer</span>
-            <hr />
-            <span>Hombre</span> 
-          </h2>
           <div>
             <p>
               <b>Diseñador Gráfico</b> y <b>Editor de Video</b> con base en la
@@ -25,10 +22,10 @@ export default function About() {
             </p>
   
             <p>
-              Estos conocimientos y experiencia, mas el constante aprendizaje y
+              Son estos conocimientos y experiencia, mas el constante aprendizaje y
               ajuste de <b>habilidades blandas</b>, y una gran capacidad para la{" "}
               <b>organización</b>, <b>comunicación</b> y <b>aprendizaje rápido</b>{" "}
-              a través de la investigación, las que me han permitido alcanzar el
+              a través de la investigación, los que me han permitido alcanzar el
               rango de <b>director creativo</b> en proyectos con{" "}
               <b>equipos de trabajo multidisciplinarios</b>.
             </p>

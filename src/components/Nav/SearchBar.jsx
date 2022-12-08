@@ -9,47 +9,63 @@ export default function SearchBar(props) {
     ingredients: "",
   });
 
+  const [searchType, setSearchType] = useState("drinks");
+
   function handleInputChange(e) {
-    if (e.target.name === "drinks") {
-      setSearch({ ...search, drinks: e.target.value });
-    }
-    if (e.target.name === "ingredients") {
-      setSearch({ ...search, ingredients: e.target.value });
-    }
+    setSearch({
+      ...search,
+      [searchType]: e.target.value,
+    });
+    // if (e.target.name === "drinks") {
+    //   setSearch({ ...search, drinks: e.target.value });
+    // }
+    // if (e.target.name === "ingredients") {
+    //   setSearch({ ...search, ingredients: e.target.value });
+    // }
+  }
+
+  function onSelect(e) {
+    setSearchType(e.target.value);
   }
 
   return (
     <div className="inputContainer">
+      <select name="type" className="input" onChange={onSelect}>
+        <option value="drinks">Drinks</option>
+        <option value="ingredients">Ingredients</option>
+      </select>
       <div className="searchDiv">
-        <label htmlFor="drinks">Search for a Drink </label>
+        <label htmlFor="search">Search for a Drink </label>
         <input
-          value={search.drinks}
+          value={searchType === "drinks" ? search.drinks : search.ingredients}
           type="text"
-          name="drinks"
+          name="search"
+          id="search"
           className="input"
-          placeholder="Search for a drink"
+          placeholder="What do you want to search?"
           onChange={handleInputChange}
         />
-        <button className="button" onClick={() => onSearch(search.drinks)}>
+        <button className="button" onClick={() => onSearch(search[searchType], searchType)}>
           Search
         </button>
       </div>
-      <div className="searchDiv">
+      {/* <div className="searchDiv">
         <label>
           Search by Ingredient{" "}
           <input
             value={search.ingredients}
             type="text"
             name="ingredients"
+            id="ingredients"
             className="input"
             placeholder="Search for an ingredient"
             onChange={handleInputChange}
           />
         </label>
-        <button className="button" onClick={() => onSearch(search.ingredients)}>
-          Search
-        </button>
-      </div>
+      <button className="button" onClick={() => onSearch(search.ingredients)}>
+        Search
+      </button>
+      </div> */}
     </div>
   );
 }
