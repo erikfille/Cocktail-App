@@ -1,16 +1,38 @@
-.inputContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+.generalContainer {
+  width: 100%;
+  height: 100%;
 }
 
-.searchDiv {
-  height: 75px;
+.divContainer {
   display:flex;
   justify-content: center;
   align-items: center;
-  margin: 0em .5em;
+
 }
+
+img {
+  width: 50%;
+  /* margin: 20%; */
+}
+
+form {
+  padding: 3rem;
+}
+
+label {
+  color: white;
+  font-weight: bold;
+}
+
+p {
+  color: #ed66ff;
+}
+
+.logo {
+  width: 50%;
+  height: auto;
+}
+
 
 .button {
   color: white;
@@ -36,7 +58,7 @@
   box-shadow: 15px 15px 30px #ce59de, -15px -15px 30px #ff73ff;
 }
 
-.input {
+input {
   border: none;
   padding: 0.5em;
   margin: 0.5em;
@@ -45,10 +67,19 @@
   transition: 0.75s;
 }
 
-.input:focus {
+input:focus {
   border: 0.5px solid white;
   outline-color: #ed66ff;
   background: #e8e8e8;
   box-shadow: 2px 2px 30px #303030, -2px -2px 30px #707070;
   transition: 0.75s;
+}
+
+input .danger {
+  outline-color: red;
+}
+
+hr {
+  color: white;
+  background: #ed66ff;
 }

@@ -4,13 +4,14 @@
   margin: 1rem;
   border-radius: 30px;
   background: inherit;
-  box-shadow:  10px 10px 20px #232323,
-               -10px -10px 20px #2f2f2f;
+  box-shadow: 10px 10px 20px #232323, -10px -10px 20px #2f2f2f;
   width: 400px;
   height: auto;
 }
 
-h1 {
+.name {
+  color: #ffffff;
+  text-decoration-line: none;
   font-size: 25px;
 }
 
@@ -25,9 +26,11 @@ h2 {
   color: white;
 }
 
-img {
+.drinkImg {
+  margin: 0px;
   width: 400px;
 }
+
 
 .button {
   color: white;
@@ -37,17 +40,16 @@ img {
   border: none;
   transition: all 0.75s;
   border-radius: 8px;
-  background: linear-gradient(145deg, #fe6dff, #d55ce6);
-  /* box-shadow: 5px 5px 10px #ce59de, -5px -5px 10px #ff73ff; */
   margin-top: 1em;
+  background: inherit;
+  border: 1px solid #ed66ff;
 }
 
 .button:hover {
   background: inherit;
-  border: 1px solid #ed66ff;
-  font-size: 13px;
+  font-size: 14px;
+  background: linear-gradient(145deg, #fe6dff, #d55ce6);
   box-shadow: 2px 2px 90px #ce59de, -2px -2px 90px #ff73ff;
-
 }
 
 .button:active {
@@ -58,4 +60,3 @@ hr {
   width: 75%;
   color: #ff8af5;
 }
-
