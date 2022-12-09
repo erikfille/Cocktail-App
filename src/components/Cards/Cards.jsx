@@ -3,8 +3,6 @@ import Card from "./Card";
 
 export default function Cards(props) {
   const { drinks, ingredients, onClose } = props;
-  console.log(drinks)
-  console.log(ingredients)
   return (
     <div>
       {drinks.search

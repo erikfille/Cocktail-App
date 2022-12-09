@@ -31,7 +31,7 @@ export function Card(props) {
   const drinkCard = (
     <div className={s.divContainer}>
       {" "}
-      <button className={s.button} onClick={() => props.onClose(idDrink)}>
+      <button className={s.button} onClick={() => props.onClose(idDrink, props.type)}>
         X
       </button>
       {favDrink ? (
@@ -58,7 +58,7 @@ export function Card(props) {
 
   const ingredientCard = (
     <div className={s.divContainer}>
-      <button className={s.button} onClick={() => props.onClose(idDrink)}>
+      <button className={s.button} onClick={() => props.onClose(idDrink, props.type)}>
         X
       </button>
       <Link to={`/drink/${idDrink}`}>

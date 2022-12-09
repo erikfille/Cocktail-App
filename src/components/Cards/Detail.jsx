@@ -14,7 +14,6 @@ export default function Detail() {
       .then((data) => {
         if (data.drinks) {
           setCocktailDetail(data.drinks[0]);
-          console.log("mounted");
         } else {
           window.alert("We haven't found any drinks that match :'(");
         }
